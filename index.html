@@ -78,16 +78,10 @@ $(function(){
       $sliderBody = $("#sliderBody"),
       $panel = $sliderBody.find("section"),
       $arrow = $("#arrow"),
-      $movie1 = $("#movie1"),
-      $movie2 = $("#movie2"),
-      $movie3 = $("#movie3"),
-      $movie4 = $("#movie4"),
-      $movie5 = $("#movie5"),
       $live = $('#liveBG');
 
   var init = function(){
     setLeap();
-    setKey();
   },
 
   setPanel = function(){
@@ -250,37 +244,7 @@ $(function(){
         }
       }
     });
-  },
-
-  setLive = function(){
-    var option = {
-      width: 1280,
-      height: 720
-    },
-    constrains = { video: {width: 1280, height: 720}, audio: false };
-    navigator.mediaDevices.getUserMedia(constrains)
-    .then(function(stream) {
-      $live[0].srcObject = stream;
-      $live[0].play();
-      $live.show();
-    });
-  },
-
-  setKey = function(){
-    document.onkeydown = function (e){
-      if(e.key === "ArrowRight"){
-        setPanel();
-      }else if(e.key === "ArrowUp"){
-        $movie1[0].play();
-        $movie2[0].play();
-        $movie3[0].play();
-        $movie4[0].play();
-        $movie5[0].play();
-      }else if(e.key === "ArrowDown"){
-        setLive();
-      }
-    };
-  };
+  }
 
   $sliderBody.on('animationend', function() {
     $sliderBody.removeClass("slide");
